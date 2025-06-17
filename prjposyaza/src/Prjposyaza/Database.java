@@ -14,7 +14,7 @@ import java.sql.*;
 public class Database {
     
     Connection con;
-    private final String driver = "com.mysql.jdbc.Driver";
+    private final String driver = "com.mysql.cj.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost/pos_yaza_xiirpl1";
     private final String user = "root";
     private final String pwd = "";
@@ -29,11 +29,9 @@ public class Database {
             con = DriverManager.getConnection(url, user, pwd);
             stm = con.createStatement();
             System.out.println("Koneksi Berhasil");
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error:\nKoneksi Data Gagal\n"+e.getMessage());
-         }catch (SQLException e){
-            System.out.println("Error:\nKoneksi Data Gagal\n"+e.getMessage());
-        }
+         }
     }
     
 //    Method 2 (Ambil data / cek data) (Select)
@@ -41,7 +39,7 @@ public class Database {
         try {
             Statement st=con.createStatement();
             return st.executeQuery(SQL);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error:\nPengecekan data gagal diakses");
             return null;
         }
@@ -52,7 +50,7 @@ public class Database {
         try {
             Statement st=con.createStatement();
             st.executeUpdate(SQL);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error:\nAksi gagal diakses");
         }
     }
