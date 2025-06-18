@@ -1,0 +1,1 @@
+This is a store application using Java OOP and MySQL. This application is very functional, because it can process data on goods, employees, and transactions in 1 application. There is also CRUD and Cash Register in it. This project was developed during the process of learning java with my SMK teacher, worked on for 1 semester.
